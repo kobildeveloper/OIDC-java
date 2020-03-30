@@ -47,16 +47,18 @@ spring:
   security:
     oauth2:
       client:
-        client-name: midentitywebapp
+        client-name: your-midentity-one-oidc-app-client-name
         client-id: your-midentity-one-oidc-app-client-id
         client-secret: your-midentity-one-oidc-app-client-secret
         scope: openid,profile,email
         authorization-grant-type: authorization_code
-        redirect-uri-template: http://localhost:8082/login/oauth2/code/midentitywebapp
+        redirect-uri-template: http://{hostname}:8082/login/oauth2/code/{client-name}
       provider:
         userAuthorizationUri: https://{partnerid}.{hostname}/digitanium/v1/auth
         accessTokenUri: https://{partnerid}.{hostname}/digitanium/v1/login
         userInfoUri: https://{partnerid}.{hostname}/digitanium/v1/userinfo
+      server:
+        port : 8082
 ```
 
 Make sure you replace `your-midentity-one-oidc-app-client-id` and `your-midentity-one-oidc-app-client-secret` with the values provided when you created your OpenId Connect app via the midentity one portal.
