@@ -44,19 +44,20 @@ Rename `app/src/main/resources/application.properties` to `app/src/main/resource
 
 ```yml
 spring:
-  security:
-    oauth2:
-      client:
-        client-name: midentitywebapp
-        client-id: your-midentity-one-oidc-app-client-id
-        client-secret: your-midentity-one-oidc-app-client-secret
-        scope: openid,profile,email
-        authorization-grant-type: authorization_code
-        redirect-uri-template: http://localhost:8082/login/oauth2/code/midentitywebapp
-      provider:
-        userAuthorizationUri: https://{partnerid}.{hostname}/digitanium/v1/auth
-        accessTokenUri: https://{partnerid}.{hostname}/digitanium/v1/login
-        userInfoUri: https://{partnerid}.{hostname}/digitanium/v1/userinfo
+security:
+  oauth2:
+    client:
+      clientId: your-midentity-one-oidc-app-client-id
+      clientSecret: your-midentity-one-oidc-app-client-secret
+      accessTokenUri: https://{partnerid}.{hostname}/digitanium/v1/login
+      userAuthorizationUri: https://{partnerid}.{hostname}/digitanium/v1/auth
+      authorizedGrantTypes: authorization_code
+      scope: openid,profile,email
+    resource:
+      userInfoUri: https://{partnerid}.{hostname}/digitanium/v1/userinfo
+
+server:
+  port : 8082
 ```
 
 Make sure you replace `your-midentity-one-oidc-app-client-id` and `your-midentity-one-oidc-app-client-secret` with the values provided when you created your OpenId Connect app via the midentity one portal.
