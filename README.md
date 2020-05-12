@@ -23,6 +23,10 @@ for you, making strong authentication much easier to implement in your app.
 
 ## Requirements
 In order to run any of the examples you will need to create an OpenId Connect
-app in mIDentity One Admin portal. You can [read more about how to do that after login to mIDentity One].
+app in mIDentity One Admin portal.
+
+### Mobile App
+1. [Android app](https://play.google.com/store/apps/details?id=com.kobil.mIdentity)
+2. [iOS App](https://apps.apple.com/us/app/midentity/id1474814314)
 
 If you don't have a mIDentity One account [you can sign up here](https://midentity.one/selfenrollment).
