@@ -1,13 +1,36 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
+	<style>
+		.button {
+			background-color: #05C46B;
+			border: none;
+			border-radius: 5px;
+			color: white;
+			padding: 15px 32px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 16px;
+		}
+		.inner {
+			font-family: 'Barlow';
+			border: 1px solid #A4A4A4;
+			border-radius: 5px;
+			display: block;
+			margin-top: 150px;
+			margin-left: 500px;
+			margin-right: 500px;
+		}
+	</style>
 	<meta charset="utf-8"/>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-	<title>Demo</title>
+	<title>mIDentity One - OIDC Authentication</title>
 	<meta name="description" content=""/>
 	<meta name="viewport" content="width=device-width"/>
 	<base href="/"/>
 	<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+	<link href='https://fonts.googleapis.com/css?family=Barlow' rel='stylesheet'>
 	<script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
 	<script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="/webjars/js-cookie/js.cookie.js"></script>
@@ -15,20 +38,28 @@
 <body>
 <section class="banner full">
 	<article>
-		<div class="inner">
+		<div class="inner" style="text-align: center;">
 			<header>
-				<h2>mIDentity One</h2>
+				<p>&nbsp;</p>
+				<img src="https://www.kobil.com/download/presales/mIDProvider/logo.png" alt="mIDentity One" width="140" height="100" />
+				<p>&nbsp;</p>
+				<h3><b>mIDentity One Demo</b></h3>
+				<br>
+				<h4>Java - Authorization flow authentication</h4>
 			</header>
 		</div>
 	</article>
 </section>
-<div class="container unauthenticated">
-	<a href="/login">Click here to Login</a>
+<div class="container unauthenticated" style="text-align: center;font-family:'Barlow'">
+	<p>&nbsp;</p>
+	<button class="button" onclick="window.location.href = '/login';"><b>Login</b></button>
 </div>
-<div class="container authenticated" style="display:none">
-	Logged in as: <span id="user"></span>
+<div class="container authenticated" style="display:none;text-align: center;font-family:'Barlow'">
+	<p>&nbsp;</p>
+	<h4>Logged in as: <span id="user"></span></h4>
+	<p>&nbsp;</p>
 	<div>
-		<button onClick="logout()" class="btn btn-primary">Logout</button>
+		<button onClick="logout()" class="button"><b>Logout</b></button>
 	</div>
 </div>
 <script type="text/javascript">
@@ -51,7 +82,6 @@
 					|| settings.type == 'DELETE') {
 				if (!(/^http:.*/.test(settings.url) || /^https:.*/
 						.test(settings.url))) {
-					// Only send the token to relative URLs i.e. locally.
 					xhr.setRequestHeader("X-XSRF-TOKEN",
 							Cookies.get('XSRF-TOKEN'));
 				}
