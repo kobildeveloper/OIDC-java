@@ -1,14 +1,14 @@
 security:
   oauth2:
     client:
-      clientId: SpringLogin
-      clientSecret: 7bfaf07b-e04f-463c-9966-87e5d74e5796
-      accessTokenUri: https://ellipsis.api.midentity.one/digitanium/v1/login
-      userAuthorizationUri: https://ellipsis.api.midentity.one/digitanium/v1/auth
+      clientId: your-midentity-box-oidc-app-client-id
+      clientSecret: your-midentity-box-oidc-app-client-secret
+      accessTokenUri: https://{partnerid}.{hostname}/digitanium/v1/login
+      userAuthorizationUri: https://{partnerid}.{hostname}/digitanium/v1/auth
       authorizedGrantTypes: authorization_code
       scope: openid,profile,email
     resource:
-      userInfoUri: https://ellipsis.api.midentity.one/digitanium/v1/userinfo
+      userInfoUri: https://{partnerid}.{hostname}/digitanium/v1/userinfo
 
 server:
   port : 8082
