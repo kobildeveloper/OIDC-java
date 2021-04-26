@@ -1,10 +1,10 @@
-# mIDentity One OpenId Connect Spring Boot Example
-This is a Spring Boot app that has been modified to support OpenId Connect Authorization Code flow via mIDentity One.
+# mIDentity Box OpenId Connect Spring Boot Example
+This is a Spring Boot app that has been modified to support OpenId Connect Authorization Code flow via mIDentity Box.
 
 ## Prerequisites
 This example uses Spring which requires [Java SDK 1.8+](https://www.java.com/) and [Apache Maven 3.2+](https://maven.apache.org/).
 
-You will also need mIDentity One account. If you don't have one you can [create a free account here](https://midentity.one/selfenrollment).
+You will also need mIDentity Box account. If you don't have one you can [create a free account here](https://midentitybox.com/selfenrollment).
 
 Most importantly you will need to create an OpenId Connect app under mIDentity Admin portal. [You can read more about how to do that after login].
 
@@ -47,9 +47,9 @@ spring:
   security:
     oauth2:
       client:
-        client-name: your-midentity-one-oidc-app-client-name
-        client-id: your-midentity-one-oidc-app-client-id
-        client-secret: your-midentity-one-oidc-app-client-secret
+        client-name: your-midentity-box-oidc-app-client-name
+        client-id: your-midentity-box-oidc-app-client-id
+        client-secret: your-midentity-box-oidc-app-client-secret
         scope: openid,profile,email
         authorization-grant-type: authorization_code
         redirect-uri-template: http://{hostname}:8082/login/oauth2/code/{client-name}
@@ -61,11 +61,11 @@ spring:
         port : 8082
 ```
 
-Make sure you replace `your-midentity-one-oidc-app-client-id` and `your-midentity-one-oidc-app-client-secret` with the values provided when you created your OpenId Connect app via the midentity one portal.
+Make sure you replace `your-midentity-box-oidc-app-client-id` and `your-midentity-box-oidc-app-client-secret` with the values provided when you created your OpenId Connect app via the midentity box portal.
 
-Change `{partnerid}.{hostname}` to match the sub-domain by mIDentity One portal.
+Change `{partnerid}.{hostname}` to match the sub-domain by mIDentity Box portal.
 
-The `redirect-uri-template` should match the redirect uri that you have specified in your mIDentity One OpenId Connect app configuration.
+The `redirect-uri-template` should match the redirect uri that you have specified in your mIDentity Box OpenId Connect app configuration.
 
 ### Step 4.
 Create a new file called `HomeController.java` in the `src/main/java/com/example/demo` directory and paste in the following.
@@ -100,7 +100,7 @@ public class HomeController {
   public String home(Principal user, OAuth2AuthenticationToken authentication) {
 
     // Success. User has been authenticated
-    System.out.print("mIDentity One UserId: " + user.getName());
+    System.out.print("mIDentity Box UserId: " + user.getName());
 
     // Get the client for the authorized user
     OAuth2AuthorizedClient client = authorizedClientService
@@ -108,7 +108,7 @@ public class HomeController {
       authentication.getAuthorizedClientRegistrationId(),
         authentication.getName());
 
-    // The endpoint for getting user info from mIDentity One
+    // The endpoint for getting user info from mIDentity Box
     String userInfoEndpointUri = client.getClientRegistration()
             .getProviderDetails().getUserInfoEndpoint().getUri();
 
@@ -138,4 +138,4 @@ Run the sample from your terminal with
 mvn spring-boot:run
 ```
 
-Your app will be available at http://localhost:8082 and you should see a **mIDentity One** link. Click on the link to start the login process.
+Your app will be available at http://localhost:8082 and you should see a **mIDentity Box** link. Click on the link to start the login process.
